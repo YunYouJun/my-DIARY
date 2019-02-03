@@ -1,9 +1,10 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
+// env
+require('dotenv').config()
 
 module.exports = {
   mode: 'spa',
-
   /*
   ** Headers of the page
   */
@@ -37,7 +38,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/vuetify'],
+  plugins: ['~/plugins/axios', '@/plugins/vuetify'],
 
   /*
   ** Nuxt.js modules
@@ -45,12 +46,14 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
     '@nuxtjs/pwa'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
+    browserBaseURL: 'http://api.1diary.me'
     // See https://github.com/nuxt-community/axios-module#options
   },
 
