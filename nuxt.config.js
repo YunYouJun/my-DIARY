@@ -53,7 +53,8 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    browserBaseURL: 'http://api.1diary.me'
+    // http:
+    browserBaseURL: '//api.1diary.me'
     // See https://github.com/nuxt-community/axios-module#options
   },
 
