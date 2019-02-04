@@ -111,18 +111,18 @@ export default {
         })
         .then(res => {
           if (res.data.code === 200) {
-            // this.$store.commit('login', {
-            //   a: this.email,
-            //   type: this.type,
-            //   t: res.data.token,
-            //   id: res.data.id
-            // })
+            this.$store.commit('login', {
+              a: this.email,
+              type: this.type,
+              t: res.data.token,
+              id: res.data.id
+            })
             this.snackbar.hint = 'Login success!'
             this.snackbar.color = 'success'
             this.snackbar.show = true
             console.log(res)
             this.$router.push({
-              path: '/inspire'
+              path: '/diary'
             })
           } else if (res.data.code === 401) {
             this.snackbar.hint = 'Login fail!'
