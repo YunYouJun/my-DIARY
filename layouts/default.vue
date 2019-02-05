@@ -2,8 +2,7 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
+      clipped
       app
     >
       <v-list>
@@ -23,54 +22,25 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar
-      :clipped-left="clipped"
-      app
-    >
-      <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>{{ `chevron_${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-    </v-toolbar>
+    <main-toolbar :drawer.sync="drawer" :title="title" />
     <v-progress-linear :active="active" :indeterminate="true" style="position:absolute;margin-top:48px;" />
     <v-content>
-      <v-container fill-height>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-content>
-    <main-footer :fixed="fixed" />
   </v-app>
 </template>
 
 <script>
-import MainFooter from '@/components/layout/MainFooter.vue'
+import MainToolbar from '@/components/layout/MainToolbar.vue'
 export default {
   middleware: 'status',
   components: {
-    MainFooter
+    MainToolbar
   },
   data() {
     return {
       active: false,
-      clipped: false,
       drawer: false,
-      fixed: false,
       items: [
         {
           icon: 'apps',
@@ -83,7 +53,6 @@ export default {
           to: '/diary'
         }
       ],
-      miniVariant: false,
       title: 'my DIARY'
     }
   },

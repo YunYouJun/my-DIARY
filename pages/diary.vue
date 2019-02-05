@@ -1,47 +1,56 @@
 <template>
-  <v-container
-    fluid
-    grid-list-lg
-  >
-    <v-layout row wrap>
-      <template v-for="diary in listShown">
-        <v-flex :key="diary.uuid" xs12>
-          <v-card>
-            <v-card-title primary-title>
-              <div>
-                <div class="headline">
-                  {{ diary.title }}
+  <div>
+    <v-container
+      fluid
+      grid-list-lg
+      style="margin-bottom:56px;"
+    >
+      <v-layout row wrap>
+        <template v-for="diary in listShown">
+          <v-flex :key="diary.uuid" xs12>
+            <v-card>
+              <v-card-title primary-title>
+                <div>
+                  <div class="headline">
+                    {{ diary.title }}
+                  </div>
+                  <span>
+                    {{ diary.content }}
+                  </span>
                 </div>
-                <span>
-                  {{ diary.content }}
-                </span>
-              </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn flat>
-                See more
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-flex>
-      </template>
-    </v-layout>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat>
+                  See more
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </template>
+      </v-layout>
 
-    <div class="text-xs-center">
-      <v-pagination
-        v-model="page"
-        :length="allPage"
-        :total-visible="7"
-        @input="clickCallback"
-      />
-    </div>
-  </v-container>
+      <!-- <div class="text-xs-center">
+        <v-pagination
+          v-model="page"
+          :length="allPage"
+          :total-visible="7"
+          @input="clickCallback"
+        />
+      </div> -->
+    </v-container>
+    <bottom-nav />
+  </div>
 </template>
 
 <script>
 import moment from 'moment'
+import BottomNav from '@/components/layout/BottomNav.vue'
 
 export default {
+  middleware: 'auth',
+  components: {
+    BottomNav
+  },
   data() {
     return {
       allPage: 0,
@@ -102,12 +111,13 @@ export default {
                 ) + 1
             }
             this.list = listTemp
-            this.listShown = this.list.slice(0, this.pageCount)
+            this.listShown = this.list
+            // this.listShown = this.list.slice(0, this.pageCount)
             this.count = this.list.length
             this.$store.commit('list', {
               list: listTemp
             })
-            this.allPage = parseInt(this.count / this.pageCount + 1)
+            // this.allPage = parseInt(this.count / this.pageCount + 1)
           }
         })
         .catch(err => {

@@ -2,6 +2,7 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
 // env
 require('dotenv').config()
+const oneDiary = require('./config/1diary')
 
 module.exports = {
   mode: 'spa',
@@ -53,8 +54,7 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    // http:
-    browserBaseURL: '//api.1diary.me'
+    browserBaseURL: oneDiary.api
     // See https://github.com/nuxt-community/axios-module#options
   },
 

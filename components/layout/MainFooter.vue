@@ -11,12 +11,14 @@
     >
       <v-btn
         v-for="link in links"
-        :key="link"
+        :key="link.index"
+        :href="link.href"
         color="white"
         flat
         round
+        target="_blank"
       >
-        {{ link }}
+        {{ link.label }}
       </v-btn>
       <v-flex
         primary
@@ -41,7 +43,28 @@ export default {
     }
   },
   data: () => ({
-    links: ['GitHub', 'About', 'Blog', 'Contact']
+    links: [
+      {
+        index: 'github',
+        label: 'GitHub',
+        href: 'https://github.com/YunYouJun/my-DIARY'
+      },
+      {
+        index: 'about',
+        label: 'About',
+        href: 'https://github.com/YunYouJun/my-DIARY#readme'
+      },
+      {
+        index: 'blog',
+        label: 'Blog',
+        href: 'https://yunyoujun.cn'
+      },
+      {
+        index: 'contact',
+        label: 'Contact',
+        href: 'mailto:me@yunyoujun.cn'
+      }
+    ]
   })
 }
 </script>
