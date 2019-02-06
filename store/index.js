@@ -2,8 +2,7 @@ export const state = () => ({
   a: '', // email
   t: '', // token
   type: 1,
-  id: '',
-  list: {}
+  id: ''
 })
 
 export const mutations = {
@@ -26,9 +25,7 @@ export const mutations = {
     localStorage.removeItem('t')
     localStorage.removeItem('type')
     localStorage.removeItem('id')
-  },
-  list: (state, data) => {
-    state.list = data.list
+    localStorage.removeItem('diaries')
   }
 }
 

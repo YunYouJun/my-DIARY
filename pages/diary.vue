@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'dayjs'
 import BottomNav from '@/components/layout/BottomNav.vue'
 import DiaryCard from '@/components/diary/DiaryCard.vue'
 
-import source from '../logs/source.json'
+// import source from '../logs/source.json'
 export default {
   middleware: 'auth',
   components: {
@@ -46,8 +46,10 @@ export default {
     }
   },
   mounted() {
-    // this.fetchDiaryList()
-    this.listShown = source
+    this.fetchDiaryList()
+    if (localStorage.getItem('diaries')) {
+      this.listShown = JSON.parse(localStorage.getItem('diaries'))
+    }
   },
   methods: {
     clickCallback(pageNum) {
@@ -58,7 +60,6 @@ export default {
     },
     fetchDiaryList() {
       // this.$emit('showProgress')
-      console.log(this.$store.state)
       const a = this.$store.state.a
       const type = this.$store.state.type
       const token = this.$store.state.t
@@ -100,9 +101,7 @@ export default {
             this.listShown = this.list
             // this.listShown = this.list.slice(0, this.pageCount)
             this.count = this.list.length
-            this.$store.commit('list', {
-              list: listTemp
-            })
+            localStorage.setItem('diaries', JSON.stringify(listTemp))
             // this.allPage = parseInt(this.count / this.pageCount + 1)
           }
         })

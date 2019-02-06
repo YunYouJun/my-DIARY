@@ -1,6 +1,6 @@
 export default function({ store, redirect }) {
   // has logged in
-  if (store.state.username) {
+  if (store.state.t) {
     return redirect('/diary')
   }
 }

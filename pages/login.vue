@@ -125,7 +125,6 @@ export default {
             this.snackbar.hint = 'Login success!'
             this.snackbar.color = 'success'
             this.snackbar.show = true
-            console.log(res)
             this.$router.push({
               path: '/diary'
             })

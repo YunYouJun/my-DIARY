@@ -96,18 +96,20 @@ export default {
 <style lang="stylus">
 .diary-card {
   border-radius: 5px;
-}
-.dayOfMonth {
-  font-size: 4rem;
-}
-.dayOfWeek {
-  font-weight: bold;
-}
-.content {
-  /* overflow: hidden; */
-  /* text-overflow: ellipsis; */
-  /* white-space: nowrap; */
-  white-space: pre-line;
+  .dayOfMonth {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+  .dayOfWeek {
+    font-weight: normal;
+  }
+  .content {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // white-space: pre-line;
+  }
 }
 .diary-mark {
   text-align: right;
