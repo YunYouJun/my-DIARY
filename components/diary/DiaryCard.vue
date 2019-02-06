@@ -1,9 +1,7 @@
 <template>
   <v-card class="diary-card" @click="dialog = !dialog">
+    <diary-dialog :dialog.sync="dialog" :diary="diary" :color="color" />
     <v-layout class="blue--text text--lighten-2">
-      <v-flex sm12>
-        <diary-dialog :dialog.sync="dialog" :diary="diary" :color="color" />
-      </v-flex>
       <v-flex md2 xs3 style="padding-right:0px;">
         <div v-ripple style="text-align:center;">
           <div class="dayOfMonth">
