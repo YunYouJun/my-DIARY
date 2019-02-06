@@ -7,23 +7,15 @@
     fixed
   >
     <v-btn dark>
-      <span>Video</span>
-      <v-icon>ondemand_video</v-icon>
+      <v-icon>menu</v-icon>
     </v-btn>
 
     <v-btn dark>
-      <span>Music</span>
-      <v-icon>music_note</v-icon>
+      <v-icon>edit</v-icon>
     </v-btn>
 
     <v-btn dark>
-      <span>Book</span>
-      <v-icon>book</v-icon>
-    </v-btn>
-
-    <v-btn dark>
-      <span>Image</span>
-      <v-icon>image</v-icon>
+      <v-icon>camera_alt</v-icon>
     </v-btn>
   </v-bottom-nav>
 </template>
@@ -32,7 +24,7 @@
 export default {
   data() {
     return {
-      color: 'blue',
+      color: 'blue lighten-2',
       bottomNav: 3
     }
   }

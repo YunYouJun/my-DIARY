@@ -6,27 +6,9 @@
       style="margin-bottom:56px;"
     >
       <v-layout row wrap>
-        <template v-for="diary in listShown">
-          <v-flex :key="diary.uuid" xs12>
-            <v-card>
-              <v-card-title primary-title>
-                <div>
-                  <div class="headline">
-                    {{ diary.title }}
-                  </div>
-                  <span>
-                    {{ diary.content }}
-                  </span>
-                </div>
-              </v-card-title>
-              <v-card-actions>
-                <v-btn flat>
-                  See more
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-        </template>
+        <v-flex v-for="diary in listShown" :key="diary.uuid" xs12>
+          <diary-card color="blue lighten-2" :diary="diary" style="margin:6px auto;" />
+        </v-flex>
       </v-layout>
 
       <!-- <div class="text-xs-center">
@@ -45,11 +27,14 @@
 <script>
 import moment from 'moment'
 import BottomNav from '@/components/layout/BottomNav.vue'
+import DiaryCard from '@/components/diary/DiaryCard.vue'
 
+import source from '../logs/source.json'
 export default {
   middleware: 'auth',
   components: {
-    BottomNav
+    BottomNav,
+    DiaryCard
   },
   data() {
     return {
@@ -61,7 +46,8 @@ export default {
     }
   },
   mounted() {
-    this.fetchDiaryList()
+    // this.fetchDiaryList()
+    this.listShown = source
   },
   methods: {
     clickCallback(pageNum) {

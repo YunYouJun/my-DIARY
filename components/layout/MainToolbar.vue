@@ -1,39 +1,76 @@
 <template>
-  <v-toolbar 
-    clipped-left
-    app
-  >
-    <v-toolbar-side-icon @click="$emit('update:drawer', !drawer)" />
-    <v-toolbar-title v-text="title" />
+  <div>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    >
+      <v-toolbar flat class="transparent" style="padding-bottom:8px;">
+        <v-list>
+          <v-list-tile avatar>
+            <v-list-tile-avatar>
+              <img :src="gravatar">
+            </v-list-tile-avatar>
 
-    <v-spacer />
+            <v-list-tile-content>
+              <v-list-tile-title>{{ $store.state.a }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
 
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
+      <v-list>
+        <v-divider />
+        <v-list-tile
+          v-for="(item, i) in items"
+          :key="i"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="item.title" />
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar 
+      app
+    >
+      <v-toolbar-side-icon @click="drawer = !drawer" />
+      <v-toolbar-title v-text="title" />
 
-    <v-btn icon>
-      <v-icon>apps</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>refresh</v-icon>
-    </v-btn>
-    
-    <template v-if="!$store.state.a">
-      <v-btn flat nuxt to="/login">
-        login
-      </v-btn>
-    </template>
-    <template v-else>
-      <v-btn icon>
-        <v-icon>more_vert</v-icon>
-      </v-btn>
-    </template>
-  </v-toolbar>
+      <v-spacer />
+      
+      <template v-if="!$store.state.a">
+        <v-btn flat nuxt to="/login">
+          login
+        </v-btn>
+      </template>
+      <template v-else>
+        <v-menu offset-y bottom left>
+          <v-btn slot="activator" icon>
+            <v-icon>more_vert</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile
+              v-for="option in options"
+              :key="option.key"
+              @click="logout"
+            >
+              <v-list-tile-title>{{ option.title }}</v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </template>
+    </v-toolbar>
+  </div>
 </template>
 
 <script>
+import md5 from 'md5'
 export default {
   props: {
     title: {
@@ -43,7 +80,33 @@ export default {
   },
   data() {
     return {
-      drawer: null
+      progress: false,
+      drawer: false,
+      gravatar: 'https://gravatar.com/avatar/' + md5(this.$store.state.a),
+      items: [
+        {
+          icon: 'apps',
+          title: 'Welcome',
+          to: '/'
+        },
+        {
+          icon: 'book',
+          title: 'Diary',
+          to: '/diary'
+        }
+      ],
+      options: [
+        {
+          key: 'logout',
+          title: 'Log out'
+        }
+      ]
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.commit('logout')
+      this.$router.push('/')
     }
   }
 }
