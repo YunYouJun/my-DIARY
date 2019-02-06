@@ -1,5 +1,5 @@
 export const state = () => ({
-  a: '', // email
+  a: '', // account
   t: '', // token
   type: 1,
   id: ''

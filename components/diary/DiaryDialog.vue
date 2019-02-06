@@ -34,7 +34,7 @@
           </div>
         </div>
       </v-card-title>
-      <v-card-text class="diary-content" style="height: 600px;">
+      <v-card-text class="diary-content" style="height: 555px;">
         <h5>{{ diary.title }}</h5>
         {{ diary.content }}
       </v-card-text>

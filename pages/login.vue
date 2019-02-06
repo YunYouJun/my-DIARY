@@ -19,10 +19,11 @@
               lazy-validation
             >
               <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
+                v-model="account"
+                :rules="accountRules"
+                label="Account"
                 required
+                placeholder="Please input e-mail/phone"
               />
               <v-text-field
                 v-model="password"
@@ -77,10 +78,11 @@ export default {
   middleware: 'logged',
   data: () => ({
     valid: true,
-    email: process.env.email,
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+/.test(v) || 'E-mail must be valid'
+    account: process.env.account,
+    accountRules: [
+      v => !!v || 'E-mail/Phone is required',
+      // v => /.+@.+/.test(v) || 'E-mail must be valid'
+      v => (v && v.length >= 6) || 'Account must be valid'
     ],
     password: process.env.password,
     passwordRules: [
@@ -109,7 +111,7 @@ export default {
       this.$axios
         .get('/login', {
           params: {
-            a: this.email,
+            a: this.account,
             w: w,
             type: this.type
           }
@@ -117,7 +119,7 @@ export default {
         .then(res => {
           if (res.data.code === 200) {
             this.$store.commit('login', {
-              a: this.email,
+              a: this.account,
               type: this.type,
               t: res.data.token,
               id: res.data.id
