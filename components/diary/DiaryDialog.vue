@@ -1,69 +1,66 @@
 <template>
-  <v-layout row justify-center>
-    <v-dialog v-model="show" scrollable>
-      <v-card class="diary-dialog" flat>
-        <v-card-title v-ripple :class="color + ' white--text'" style="text-align:center;">
-          <v-btn flat icon color="white" class="close" @click="show=!show">
-            <v-icon>close</v-icon>
-          </v-btn>
-          <div style="width:100%;">
-            <div>
-              {{ month }}
-            </div>
-            <div class="dayOfMonth">
-              {{ diary.dayOfMonth }}
-            </div>
-            <div class="dayOfWeek">
-              {{ weekday }}
-              <span style="margin-left:5px;">
-                {{ time }}
-              </span>
-            </div>
-            <div>
-              <span class="weather">
-                <v-icon dark>
-                  wb_sunny
-                </v-icon>
-                {{ diary.weather + ' ' + diary.temperature }}
-              </span>
-              <span class="address">
-                <v-icon dark>
-                  location_on
-                </v-icon>
-                {{ diary.address + ', ' + diary.city }}
-              </span>
-            </div>
+  <v-dialog v-model="show" scrollable>
+    <v-card class="diary-dialog" flat>
+      <v-card-title v-ripple :class="color + ' white--text'" style="text-align:center;">
+        <v-btn flat icon color="white" class="close" @click="show=!show">
+          <v-icon>close</v-icon>
+        </v-btn>
+        <div style="width:100%;">
+          <div>
+            {{ month }}
           </div>
-        </v-card-title>
-        <v-card-text class="diary-content" style="height: 600px;">
-          <h5>{{ diary.title }}</h5>
-          {{ diary.content }}
-        </v-card-text>
-        <v-bottom-nav
-          :color="color"
-          :value="true"
-          absolute
-          dark
-        >
-          <v-btn dark>
-            <v-icon>more_horiz</v-icon>
-          </v-btn>
-          <v-btn dark>
-            <v-icon>location_on</v-icon>
-          </v-btn>
-          <v-btn dark>
-            <v-icon>camera_alt</v-icon>
-          </v-btn>
-          <v-btn dark>
-            <v-icon>music_note</v-icon>
-          </v-btn>
-          <v-btn dark>
-            <v-icon>delete</v-icon>
-          </v-btn>
-        </v-bottom-nav>
-      </v-card>
-    </v-dialog>
-  </v-layout>
+          <div class="dayOfMonth">
+            {{ diary.dayOfMonth }}
+          </div>
+          <div class="dayOfWeek">
+            {{ weekday }}
+            <span style="margin-left:5px;">
+              {{ time }}
+            </span>
+          </div>
+          <div>
+            <span class="weather">
+              <v-icon dark>
+                wb_sunny
+              </v-icon>
+              {{ diary.weather + ' ' + diary.temperature }}
+            </span>
+            <span class="address">
+              <v-icon dark>
+                location_on
+              </v-icon>
+              {{ diary.address + ', ' + diary.city }}
+            </span>
+          </div>
+        </div>
+      </v-card-title>
+      <v-card-text class="diary-content" style="height: 600px;">
+        <h5>{{ diary.title }}</h5>
+        {{ diary.content }}
+      </v-card-text>
+      <v-bottom-nav
+        :color="color"
+        :value="true"
+        dark
+      >
+        <!-- <v-btn dark>
+          <v-icon>more_horiz</v-icon>
+        </v-btn> -->
+        <v-btn dark>
+          <v-icon>location_on</v-icon>
+        </v-btn>
+        <v-btn dark>
+          <v-icon>camera_alt</v-icon>
+        </v-btn>
+        <v-btn dark>
+          <v-icon>music_note</v-icon>
+        </v-btn>
+        <v-btn dark>
+          <v-icon>delete</v-icon>
+        </v-btn>
+      </v-bottom-nav>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
