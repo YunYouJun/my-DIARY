@@ -5,7 +5,7 @@
       <v-flex md2 xs3 style="padding-right:0px;">
         <div v-ripple style="text-align:center;">
           <div class="dayOfMonth">
-            {{ diary.dayOfMonth }}
+            {{ dayOfMonth }}
           </div>
           <div class="dayOfWeek">
             {{ weekday }}
@@ -75,14 +75,17 @@ export default {
     }
   },
   computed: {
+    dayOfMonth() {
+      return dayjs(this.diary.createdtime).format('D')
+    },
     weekday() {
-      return dayjs(this.diary.createTime).format('ddd')
+      return dayjs(this.diary.createdtime).format('ddd')
     },
     month() {
-      return dayjs(this.diary.createTime).format('MM/YYYY')
+      return dayjs(this.diary.createdtime).format('MM/YYYY')
     },
     time() {
-      return dayjs(this.diary.createTime).format('HH:mm')
+      return dayjs(this.diary.createdtime).format('HH:mm')
     }
   },
   methods: {

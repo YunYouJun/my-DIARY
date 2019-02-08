@@ -1,4 +1,8 @@
 export default function({ $axios, redirect }) {
+  const token = localStorage.getItem('token')
+  if (token) {
+    $axios.setHeader('auth', 'token ' + token)
+  }
   $axios.onRequest(config => {
     console.log('Making request to ' + config.url)
   })

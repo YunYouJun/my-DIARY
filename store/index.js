@@ -1,31 +1,35 @@
 export const state = () => ({
-  a: '', // account
-  t: '', // token
-  type: 1,
-  id: ''
+  avatar: '',
+  email: '',
+  token: '',
+  userid: 0,
+  name: ''
 })
 
 export const mutations = {
   login: (state, data) => {
-    state.a = data.a
-    state.t = data.t
-    state.type = data.type
-    state.id = data.id
-    localStorage.setItem('a', data.a)
-    localStorage.setItem('t', data.t)
-    localStorage.setItem('type', data.type)
-    localStorage.setItem('id', data.id)
+    state.avatar = data.avatar
+    state.email = data.email
+    state.token = data.token
+    state.userid = data.userid
+    state.name = data.name
+    localStorage.setItem('avatar', data.avatar)
+    localStorage.setItem('email', data.email)
+    localStorage.setItem('token', data.token)
+    localStorage.setItem('userid', data.userid)
+    localStorage.setItem('name', data.name)
   },
   logout: state => {
-    state.a = ''
-    state.t = ''
-    state.type = 0
-    state.id = ''
-    localStorage.removeItem('a')
-    localStorage.removeItem('t')
-    localStorage.removeItem('type')
-    localStorage.removeItem('id')
-    localStorage.removeItem('diaries')
+    state.avatar = ''
+    state.email = ''
+    state.token = ''
+    state.userid = 0
+    state.name = ''
+    localStorage.removeItem('avatar')
+    localStorage.removeItem('email')
+    localStorage.removeItem('token')
+    localStorage.removeItem('userid')
+    localStorage.removeItem('name')
   }
 }
 

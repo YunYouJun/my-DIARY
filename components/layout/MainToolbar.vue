@@ -1,10 +1,7 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-    >
-      <v-toolbar flat class="transparent" style="padding-bottom:8px;">
+    <v-navigation-drawer v-model="drawer" app>
+      <v-toolbar v-if="$store.state.token" flat class="transparent" style="padding-bottom:8px;">
         <v-list>
           <v-list-tile avatar>
             <v-list-tile-avatar>
@@ -12,7 +9,7 @@
             </v-list-tile-avatar>
 
             <v-list-tile-content>
-              <v-list-tile-title>{{ $store.state.a }}</v-list-tile-title>
+              <v-list-tile-title>{{ $store.state.name }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -36,15 +33,13 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar 
-      app
-    >
+    <v-toolbar app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
 
       <v-spacer />
-      
-      <template v-if="!$store.state.a">
+
+      <template v-if="!$store.state.token">
         <v-btn flat nuxt to="/login">
           login
         </v-btn>
@@ -70,7 +65,8 @@
 </template>
 
 <script>
-import md5 from 'md5'
+// import md5 from 'md5'
+import api from '@/api'
 export default {
   props: {
     title: {
@@ -82,7 +78,8 @@ export default {
     return {
       progress: false,
       drawer: false,
-      gravatar: 'https://gravatar.com/avatar/' + md5(this.$store.state.a),
+      // gravatar: 'https://gravatar.com/avatar/' + md5(this.$store.state.email),
+      gravatar: api.ohShenghuo.url + this.$store.state.avatar,
       items: [
         {
           icon: 'apps',

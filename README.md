@@ -2,6 +2,14 @@
 
 > my DIARY 君の名は。
 
+## Data
+
+Data base on <https://ohshenghuo.com/>
+
+## API
+
+[你的日记 API DOC - Postman](https://documenter.getpostman.com/view/3326320/Rztmr8pE)
+
 ## Build Setup
 
 ``` bash

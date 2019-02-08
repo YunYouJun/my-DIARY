@@ -1,7 +1,11 @@
 <template>
   <v-app>
     <main-toolbar :title="title" />
-    <v-progress-linear :active="progress" :indeterminate="true" style="position:absolute;margin-top:48px;" />
+    <v-progress-linear
+      :active="progress"
+      :indeterminate="true"
+      style="position:absolute;margin-top:48px;"
+    />
     <v-content>
       <nuxt />
     </v-content>

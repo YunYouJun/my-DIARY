@@ -1,9 +1,6 @@
 <template>
   <v-container fill-height>
-    <v-layout 
-      justify-center
-      align-center
-    >
+    <v-layout justify-center align-center>
       <v-flex xs12 sm12 style="margin-bottom:100px;">
         <div class="text-xs-center">
           <v-btn large round color="primary" nuxt to="/login">
@@ -26,11 +23,6 @@ export default {
   },
   data() {
     return {}
-  },
-  methods: {
-    goToLogin() {
-      this.$router.push('/login')
-    }
   }
 }
 </script>

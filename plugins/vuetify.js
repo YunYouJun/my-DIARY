@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import colors from 'vuetify/es5/util/colors'
 
+import Toast from '@/components/global/toast'
+Vue.prototype.$toast = Toast
+
 Vue.use(Vuetify, {
   theme: {
     primary: '#121212', // a color that is not in the material colors palette

@@ -1,8 +1,12 @@
 <template>
   <v-dialog v-model="show" scrollable>
     <v-card class="diary-dialog" flat>
-      <v-card-title v-ripple :class="color + ' white--text'" style="text-align:center;">
-        <v-btn flat icon color="white" class="close" @click="show=!show">
+      <v-card-title
+        v-ripple
+        :class="color + ' white--text'"
+        style="text-align:center;"
+      >
+        <v-btn flat icon color="white" class="close" @click="show = !show">
           <v-icon>close</v-icon>
         </v-btn>
         <div style="width:100%;">
@@ -10,7 +14,7 @@
             {{ month }}
           </div>
           <div class="dayOfMonth">
-            {{ diary.dayOfMonth }}
+            {{ dayOfMonth }}
           </div>
           <div class="dayOfWeek">
             {{ weekday }}
@@ -38,11 +42,7 @@
         <h5>{{ diary.title }}</h5>
         {{ diary.content }}
       </v-card-text>
-      <v-bottom-nav
-        :color="color"
-        :value="true"
-        dark
-      >
+      <v-bottom-nav :color="color" :value="true" dark>
         <!-- <v-btn dark>
           <v-icon>more_horiz</v-icon>
         </v-btn> -->
@@ -91,14 +91,17 @@ export default {
     }
   },
   computed: {
+    dayOfMonth() {
+      return dayjs(this.diary.createdtime).format('D')
+    },
     weekday() {
-      return dayjs(this.diary.createTime).format('dddd')
+      return dayjs(this.diary.createdtime).format('ddd')
     },
     month() {
-      return dayjs(this.diary.createTime).format('MMMM')
+      return dayjs(this.diary.createdtime).format('MM/YYYY')
     },
     time() {
-      return dayjs(this.diary.createTime).format('HH:mm')
+      return dayjs(this.diary.createdtime).format('HH:mm')
     }
   },
   watch: {
