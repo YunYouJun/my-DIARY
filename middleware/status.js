@@ -1,5 +1,5 @@
 // import ohShenghuo from '@/api/ohShenghuo.json'
-export default function({ store }) {
+export default function({ $axios, store }) {
   if (!store.state.token) {
     const token = localStorage.getItem('token')
     if (token) {
@@ -12,4 +12,5 @@ export default function({ store }) {
       })
     }
   }
+  $axios.setHeader('auth', 'token ' + store.state.token)
 }

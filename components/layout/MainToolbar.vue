@@ -102,7 +102,7 @@ export default {
   computed: {
     gravatar() {
       return api.ohShenghuo.url + this.$store.state.avatar
-    } 
+    }
   },
   methods: {
     logout() {

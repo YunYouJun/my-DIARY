@@ -1,7 +1,4 @@
 export default function({ $axios, redirect, store }) {
-  if (store.state.token) {
-    $axios.setHeader('auth', 'token ' + store.state.token)
-  }
   $axios.onRequest(config => {
     console.log('Making request to ' + config.url)
   })
