@@ -32,3 +32,10 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  font-family: 'Nunito', 'Kosugi Maru', 'Segoe UI', Tahoma, Geneva, Verdana,
+    sans-serif;
+}
+</style>

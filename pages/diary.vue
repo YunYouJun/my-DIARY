@@ -5,7 +5,7 @@
       grid-list-lg
       style="margin-bottom:56px;"
     >
-      <v-layout row wrap>
+      <v-layout v-if="diaries.length" row wrap>
         <v-flex v-for="diary in diaries" :key="diary.id" xs12>
           <diary-card
             color="blue lighten-2"
@@ -15,6 +15,17 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-dialog v-model="dialog" max-width="80%">
+      <v-card class="pa-2 text-xs-center no-diary">
+        <div class="my-2 no-entries-title">
+          {{ msg.title }}
+        </div>
+        <p>{{ msg.content }}</p>
+        <v-btn flat class="blue--text text--lighten-3 action">
+          {{ msg.action }}
+        </v-btn>
+      </v-card>
+    </v-dialog>
     <bottom-nav />
   </div>
 </template>
@@ -30,7 +41,13 @@ export default {
   },
   data() {
     return {
-      diaries: []
+      dialog: false,
+      diaries: [],
+      msg: {
+        title: 'NO Entries',
+        content: '日記がありません',
+        action: '新しいアカウントを作成'
+      }
     }
   },
   mounted() {
@@ -44,6 +61,9 @@ export default {
           console.log(res)
           if (res.data.diaries) {
             this.diaries = res.data.diaries
+            if (this.diaries.length === 0) {
+              this.dialog = true
+            }
           } else {
             this.$toast.open({
               color: 'warning',
@@ -61,3 +81,16 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+.no-diary {
+  text-align: center;
+  border-radius: 10px;
+  .no-entries-title {
+    font-size: 50px;
+  }
+  .action {
+    text-decoration: underline;
+  }
+}
+</style>
