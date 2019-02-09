@@ -5,6 +5,7 @@
 ## Preview
 
 - [nideriji | Heroku app](https://nideriji.herokuapp.com/)
+- [my-diary | now.sh](https://my-diary.yunyoujun.cn)
 
 ## Data
 
