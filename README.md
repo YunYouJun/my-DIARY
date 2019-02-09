@@ -1,5 +1,7 @@
 # my-DIARY
 
+[![Build Status](https://travis-ci.com/YunYouJun/my-DIARY.svg?branch=master)](https://travis-ci.com/YunYouJun/my-DIARY)
+
 > my DIARY 君の名は。
 
 ## Preview

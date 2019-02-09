@@ -12,5 +12,7 @@ export default function({ $axios, store }) {
       })
     }
   }
-  $axios.setHeader('auth', 'token ' + store.state.token)
+  if (store.state.token) {
+    $axios.setHeader('auth', 'token ' + store.state.token)
+  }
 }
