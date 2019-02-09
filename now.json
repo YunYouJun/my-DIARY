@@ -1,4 +1,5 @@
 {
   "name": "my-diary",
-  "version": 1
+  "version": 1,
+  "alias": ["my-diary.yunyoujun.cn", "my-diary.now.sh"]
 }
