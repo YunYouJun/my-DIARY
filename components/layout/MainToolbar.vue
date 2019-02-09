@@ -79,7 +79,6 @@ export default {
       progress: false,
       drawer: false,
       // gravatar: 'https://gravatar.com/avatar/' + md5(this.$store.state.email),
-      gravatar: api.ohShenghuo.url + this.$store.state.avatar,
       items: [
         {
           icon: 'apps',
@@ -99,6 +98,11 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    gravatar() {
+      return api.ohShenghuo.url + this.$store.state.avatar
+    } 
   },
   methods: {
     logout() {

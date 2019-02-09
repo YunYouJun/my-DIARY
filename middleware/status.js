@@ -10,6 +10,7 @@ export default function({ $axios, store }) {
         userid: localStorage.getItem('userid'),
         name: localStorage.getItem('name')
       })
+      $axios.setHeader('auth', 'token ' + token)
     }
   }
 }
