@@ -2,6 +2,10 @@
 
 > my DIARY 君の名は。
 
+## Preview
+
+- [nideriji | Heroku app](https://nideriji.herokuapp.com/)
+
 ## Data
 
 Data base on <https://ohshenghuo.com/>
