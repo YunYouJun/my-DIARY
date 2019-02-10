@@ -112,8 +112,6 @@ export default {
   },
   data() {
     return {
-      color: this.$store.state.theme.color,
-      textColor: this.$store.state.theme.textColor,
       progress: false,
       drawer: false,
       items: [
@@ -147,6 +145,12 @@ export default {
     }
   },
   computed: {
+    color() {
+      return this.$store.state.theme.color
+    },
+    textColor() {
+      return this.$store.state.theme.textColor
+    },
     gravatar() {
       let avatar = 'https://gravatar.com/avatar/'
       if (this.$store.state.user_config.avatar) {
