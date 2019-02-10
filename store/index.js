@@ -21,18 +21,10 @@ export const mutations = {
     localStorage.setItem('token', data.token)
     localStorage.setItem('userid', data.userid)
     localStorage.setItem('user_config', JSON.stringify(data.user_config))
-    if (state.user_config.role === 'boy') {
-      state.theme = {
-        color: 'blue accent-2',
-        textColor: 'blue--text text--accent-2'
-      }
-    } else if (state.user_config.role === 'girl') {
-      state.theme = {
-        color: 'red lighten-2',
-        textColor: 'pink--text text--lighten-2'
-      }
-    }
-    localStorage.setItem('theme', JSON.stringify(state.theme))
+  },
+  setTheme: (state, theme) => {
+    state.theme = theme
+    localStorage.setItem('theme', JSON.stringify(theme))
   },
   logout: state => {
     state.token = ''

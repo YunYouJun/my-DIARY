@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <main-toolbar :color="color" :text-color="textColor" :title="title" />
+    <main-toolbar :title="title" />
     <v-progress-linear
       :active="progress"
       :indeterminate="true"
       style="position:absolute;margin-top:48px;"
     />
     <v-content>
-      <nuxt :color="color" />
+      <nuxt />
     </v-content>
   </v-app>
 </template>
@@ -20,8 +20,6 @@ export default {
   },
   data() {
     return {
-      color: this.$store.state.theme.color,
-      textColor: this.$store.state.theme.textColor,
       progress: false,
       title: 'my DIARY'
     }

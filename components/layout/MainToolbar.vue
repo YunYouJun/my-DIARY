@@ -105,14 +105,6 @@
 import api from '@/api'
 export default {
   props: {
-    color: {
-      type: String,
-      default: ''
-    },
-    textColor: {
-      type: String,
-      default: ''
-    },
     title: {
       type: String,
       default: ''
@@ -120,6 +112,8 @@ export default {
   },
   data() {
     return {
+      color: this.$store.state.theme.color,
+      textColor: this.$store.state.theme.textColor,
       progress: false,
       drawer: false,
       items: [
