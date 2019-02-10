@@ -1,8 +1,8 @@
 <template>
   <v-bottom-nav
-    :active.sync="bottomNav"
     :color="color"
     :value="true"
+    app
     dark
     fixed
   >
@@ -22,10 +22,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      color: 'blue lighten-2',
-      bottomNav: 3
+  props: {
+    color: {
+      type: String,
+      default: ''
     }
   }
 }

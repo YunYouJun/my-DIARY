@@ -1,16 +1,18 @@
 <template>
   <div>
     <v-container
+      v-if="diaries.length"
       fluid
       grid-list-lg
-      style="margin-bottom:56px;"
+      class="diary-container"
+      fill-height
     >
-      <v-layout v-if="diaries.length" row wrap>
+      <v-layout row wrap align-content-start>
         <v-flex v-for="diary in diaries" :key="diary.id" xs12>
           <diary-card
-            color="blue lighten-2"
+            :color="color"
             :diary="diary"
-            style="margin:2px auto;"
+            class="mb-2"
           />
         </v-flex>
       </v-layout>
@@ -21,12 +23,12 @@
           {{ msg.title }}
         </div>
         <p>{{ msg.content }}</p>
-        <v-btn flat class="blue--text text--lighten-3 action">
+        <v-btn flat :class="'action ' + textColor">
           {{ msg.action }}
         </v-btn>
       </v-card>
     </v-dialog>
-    <bottom-nav />
+    <bottom-nav :color="color" />
   </div>
 </template>
 
@@ -41,6 +43,8 @@ export default {
   },
   data() {
     return {
+      color: this.$store.state.theme.color,
+      textColor: this.$store.state.theme.textColor,
       dialog: false,
       diaries: [],
       msg: {
@@ -67,14 +71,14 @@ export default {
           } else {
             this.$toast.open({
               color: 'warning',
-              text: 'Nothing'
+              text: 'Something wrong'
             })
           }
         })
         .catch(err => {
-          console.log('err:' + err)
           this.$toast.open({
-            text: err.info
+            color: 'error',
+            text: err
           })
         })
     }
@@ -83,6 +87,12 @@ export default {
 </script>
 
 <style lang="stylus">
+.diary-container {
+  background-attachment: fixed;
+  background-image: url('~assets/img/bg/sky.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .no-diary {
   text-align: center;
   border-radius: 10px;

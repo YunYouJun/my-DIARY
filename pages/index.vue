@@ -9,7 +9,7 @@
         </div>
       </v-flex>
       <v-flex>
-        <main-footer :fixed="true" />
+        <main-footer />
       </v-flex>
     </v-layout>
   </v-container>

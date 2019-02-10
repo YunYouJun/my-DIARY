@@ -7,7 +7,7 @@
 ## Preview
 
 - [nideriji | Heroku app](https://nideriji.herokuapp.com/)
-- [my-diary | now.sh](https://diary.now.sh)
+- [diary | now.sh](https://diary.now.sh)
 - [my-diary | now.sh](https://my-diary.now.sh)
 - [my-diary | yunyoujun.cn](https://my-diary.yunyoujun.cn)
 

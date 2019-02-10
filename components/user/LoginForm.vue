@@ -21,7 +21,7 @@
           :label="agreement"
           required
         />
-        <v-btn :disabled="!valid" color="success" @click="submit">
+        <v-btn :disabled="!valid" color="success" :loading="loading" @click="submit">
           Login
         </v-btn>
         <v-btn @click="reset">
@@ -40,6 +40,7 @@ export default {
     agreement: 'Would you like to be my friend?',
     valid: true,
     checkbox: false,
+    loading: false,
     loginForm: {
       csrfmiddlewaretoken: ohShenghuo.csrftoken,
       email: process.env.email,
@@ -57,9 +58,6 @@ export default {
       checkbox: [v => !!v || 'You must agree to continue!']
     }
   }),
-  mounted() {
-    console.log(process.env)
-  },
   methods: {
     reset() {
       this.$refs.form.reset()
@@ -70,32 +68,37 @@ export default {
       }
     },
     login() {
+      this.loading = true
       this.$axios
         .post('/api/login/', qs.stringify(this.loginForm, { encode: false }))
         .then(res => {
           if (res.data && res.data.token) {
             this.$store.commit('login', {
-              avatar: res.data.user_config.avatar,
-              email: this.loginForm.email,
               token: res.data.token,
               userid: res.data.userid,
-              name: res.data.user_config.name
+              user_config: res.data.user_config
             })
             this.$toast.open({
               color: 'success',
-              text: 'Login success!'
+              text: 'Login success'
             })
+            console.log(localStorage.getItem('token'))
             this.$router.push({
               path: '/diary'
+            })
+          } else {
+            this.$toast.open({
+              color: 'error',
+              title: 'Login fail',
+              text: 'Please check your e-mail or password.'
             })
           }
         })
         .catch(err => {
-          console.log(err)
           this.$toast.open({
             color: 'error',
-            title: 'Login fail!',
-            text: 'Please check your e-mail or password.'
+            title: 'Login fail',
+            text: err
           })
         })
     }

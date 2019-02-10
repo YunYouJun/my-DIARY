@@ -1,5 +1,5 @@
 <template>
-  <v-footer height="auto" color="primary lighten-1" :fixed="fixed">
+  <v-footer height="auto" color="primary lighten-1" absolute>
     <v-layout justify-center row wrap>
       <v-btn
         v-for="link in links"
@@ -28,12 +28,6 @@
 
 <script>
 export default {
-  props: {
-    fixed: {
-      type: Boolean,
-      default: false
-    }
-  },
   data: () => ({
     links: [
       {
