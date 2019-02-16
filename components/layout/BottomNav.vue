@@ -6,7 +6,7 @@
     dark
     fixed
   >
-    <v-btn dark>
+    <v-btn dark @click="toggleDrawer">
       <v-icon>menu</v-icon>
     </v-btn>
 
@@ -21,12 +21,16 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   props: {
     color: {
       type: String,
       default: ''
     }
+  },
+  methods: {
+    ...mapMutations('app', ['toggleDrawer'])
   }
 }
 </script>

@@ -1,3 +1,9 @@
+import app from './modules/app'
+
+export const modules = {
+  app
+}
+
 export const state = () => ({
   token: localStorage.getItem('token') || '',
   userid: localStorage.getItem('userid') || '',

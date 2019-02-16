@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <main-toolbar :title="title" />
+    <main-toolbar />
     <v-progress-linear
       :active="progress"
       :indeterminate="true"
@@ -20,8 +20,7 @@ export default {
   },
   data() {
     return {
-      progress: false,
-      title: 'my DIARY'
+      progress: false
     }
   },
   methods: {
