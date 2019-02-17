@@ -10,7 +10,7 @@
       <v-layout row wrap align-content-start>
         <v-flex v-for="diary in diaries" :key="diary.id" xs12>
           <diary-card
-            :color="color"
+            :color="theme.color"
             :diary="diary"
             class="mb-2"
           />
@@ -23,28 +23,23 @@
           {{ msg.title }}
         </div>
         <p>{{ msg.content }}</p>
-        <v-btn flat :class="'action ' + textColor">
+        <v-btn flat :class="'action ' + theme.textColor">
           {{ msg.action }}
         </v-btn>
       </v-card>
     </v-dialog>
-    <bottom-nav :color="color" />
   </div>
 </template>
 
 <script>
-import BottomNav from '@/components/layout/BottomNav.vue'
 import DiaryCard from '@/components/diary/DiaryCard.vue'
+import { mapState } from 'vuex'
 export default {
-  middleware: 'auth',
   components: {
-    BottomNav,
     DiaryCard
   },
   data() {
     return {
-      color: this.$store.state.theme.color,
-      textColor: this.$store.state.theme.textColor,
       dialog: false,
       diaries: [],
       msg: {
@@ -53,6 +48,9 @@ export default {
         action: '新しいアカウントを作成'
       }
     }
+  },
+  computed: {
+    ...mapState(['theme'])
   },
   mounted() {
     this.fetchDiaries()

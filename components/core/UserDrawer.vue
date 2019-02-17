@@ -53,7 +53,8 @@
                   slot="activator" 
                   icon 
                   :color="color"
-                  class="config-btn">
+                  class="config-btn"
+                >
                   <v-icon>settings</v-icon>
                 </v-btn>
                 <v-list>
@@ -89,17 +90,17 @@ export default {
         {
           icon: 'book',
           title: 'TAKI',
-          to: '/diary'
+          to: '/app/diary'
         },
         {
           icon: 'book',
           title: 'DIARY',
-          to: '/diary'
+          to: '/app/diary'
         },
         {
           icon: 'error_outline',
           title: '禁止事项',
-          to: '/diary'
+          to: '/'
         }
       ],
       options: [

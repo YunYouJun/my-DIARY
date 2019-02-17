@@ -1,6 +1,6 @@
 <template>
   <div>
-    <user-drawer v-if="$store.state.token"/>
+    <user-drawer v-if="$store.state.token" />
 
     <v-toolbar 
       app 
@@ -34,6 +34,8 @@
               :value="navItem.title"
               active-class="nav-btn-active"
               style="width:90px;"
+              nuxt
+              :to="navItem.to"
             >
               {{ navItem.title }}
             </v-btn>
@@ -57,15 +59,15 @@ export default {
       navItems: [
         {
           title: 'Entries',
-          to: ''
+          to: '/app/entries'
         },
         {
           title: 'Calendar',
-          to: ''
+          to: '/app/calendar'
         },
         {
           title: 'Diary',
-          to: ''
+          to: '/app/diary'
         }
       ]
     }
@@ -73,7 +75,9 @@ export default {
   computed: {
     extended() {
       if (this.activeNav) {
-        return true
+        if (this.activeNav !== 'Calendar') {
+          return true
+        }
       }
       return false
     },

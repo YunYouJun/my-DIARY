@@ -1,6 +1,7 @@
 <template>
   <v-bottom-nav
-    :color="color"
+    v-if="$store.state.token"
+    :color="theme.color"
     :value="true"
     app
     dark
@@ -21,13 +22,10 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
-  props: {
-    color: {
-      type: String,
-      default: ''
-    }
+  computed: {
+    ...mapState(['theme'])
   },
   methods: {
     ...mapMutations('app', ['toggleDrawer'])
