@@ -1,42 +1,41 @@
 <template>
-  <v-card class="diary-card" @click="dialog = !dialog">
-    <diary-dialog :dialog.sync="dialog" :diary="diary" :color="color" />
-    <v-layout class="blue--text text--lighten-2">
-      <v-flex md2 xs3 style="padding-right:0px;">
-        <div v-ripple style="text-align:center;">
-          <div class="dayOfMonth">
+  <v-card class="diary-card" height="85" @click="dialog = !dialog">
+    <diary-dialog :dialog.sync="dialog" :diary="diary" :color="theme.color" />
+    <v-layout :class="theme.textColor">
+      <v-flex md2 xs3 class="text-xs-center pr-0">
+        <div v-ripple>
+          <div class="dayOfMonth pt-2">
             {{ dayOfMonth }}
           </div>
           <div class="dayOfWeek">
-            {{ weekday }}
-          </div>
-          <div>
-            {{ month }}
+            {{ weekday }}.
           </div>
         </div>
       </v-flex>
-      <v-flex md10 xs6 style="padding:0px;">
-        <v-card-title style="padding-left:0px;padding-right:0px;">
+      <v-flex md10 xs6 class="px-0">
+        <v-card-title class="px-0 pa-2">
           <div>
             <div class="time">
               {{ time }}
             </div>
-            <div class="headline">
+            <div class="subheading">
               {{ diary.title }}
             </div>
-            <div class="content primary--text">
+            <div :class="theme.textColor + ' text-truncate'" style="width:180px;">
               {{ diary.content }}
             </div>
           </div>
         </v-card-title>
       </v-flex>
-      <v-flex md2 xs3 style="padding-left:0px;">
+      <v-flex md2 xs3 class="pl-0">
         <div class="diary-mark">
           <v-tooltip bottom>
             <v-icon slot="activator">
               wb_sunny
             </v-icon>
-            <span>{{ diary.weather }}</span>
+            <span class="text-uppercase">
+              {{ diary.weather }}
+            </span>
           </v-tooltip>
           <v-icon>mood</v-icon>
           <v-icon>bookmark_border</v-icon>
@@ -49,22 +48,19 @@
 <script>
 import dayjs from 'dayjs'
 import DiaryDialog from '@/components/diary/DiaryDialog.vue'
-
+import theme from '@/config/theme.js'
 export default {
   components: {
     DiaryDialog
   },
   props: {
-    color: {
-      type: String,
-      default: ''
-    },
     diary: {
       type: Object,
       default: function() {
         return {
           title: '',
-          content: ''
+          content: '',
+          weather: ''
         }
       }
     }
@@ -75,14 +71,25 @@ export default {
     }
   },
   computed: {
+    theme() {
+      if (this.diary.space === 'boy') {
+        return theme.boy
+      } else if (this.diary.space === 'girl') {
+        return theme.girl
+      }
+      return {
+        color: '',
+        themeColor: ''
+      }
+    },
     dayOfMonth() {
-      return dayjs(this.diary.createdtime).format('D')
+      return dayjs(this.diary.createddate).format('D')
     },
     weekday() {
-      return dayjs(this.diary.createdtime).format('ddd')
+      return dayjs(this.diary.createddate).format('ddd')
     },
     month() {
-      return dayjs(this.diary.createdtime).format('MM/YYYY')
+      return dayjs(this.diary.createddate).format('MM/YYYY')
     },
     time() {
       return dayjs(this.diary.createdtime).format('HH:mm')
@@ -100,8 +107,8 @@ export default {
 .diary-card {
   border-radius: 5px;
   .dayOfMonth {
-    font-size: 4rem;
-    line-height: 4rem;
+    font-size: 40px;
+    line-height: 40px;
   }
   .dayOfWeek {
     font-weight: normal;
@@ -118,7 +125,7 @@ export default {
   text-align: right;
   .v-icon {
     font-size: 16px;
-    margin-right: 8px;
+    margin-right: 6px;
   }
 }
 </style>

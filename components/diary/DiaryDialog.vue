@@ -22,23 +22,25 @@
               {{ time }}
             </span>
           </div>
-          <div>
+          <div class="mt-1">
             <span class="weather">
               <v-icon dark>
                 wb_sunny
               </v-icon>
-              {{ diary.weather + ' ' + diary.temperature }}
+              <span>{{ diary.weather + ' ' + diary.mood }}</span>
+              <!-- {{ diary.weather + ' ' + diary.temperature }} -->
             </span>
             <span class="address">
               <v-icon dark>
                 location_on
               </v-icon>
-              {{ diary.address + ', ' + diary.city }}
+              <span>earth</span>
+              <!-- {{ diary.address + ', ' + diary.city }} -->
             </span>
           </div>
         </div>
       </v-card-title>
-      <v-card-text class="diary-content" style="height: 555px;">
+      <v-card-text class="diary-content" style="height: 520px;">
         <h5>{{ diary.title }}</h5>
         {{ diary.content }}
       </v-card-text>
@@ -95,10 +97,10 @@ export default {
       return dayjs(this.diary.createdtime).format('D')
     },
     weekday() {
-      return dayjs(this.diary.createdtime).format('ddd')
+      return dayjs(this.diary.createdtime).format('dddd')
     },
     month() {
-      return dayjs(this.diary.createdtime).format('MM/YYYY')
+      return dayjs(this.diary.createdtime).format('MMMM')
     },
     time() {
       return dayjs(this.diary.createdtime).format('HH:mm')
@@ -148,6 +150,10 @@ export default {
       font-size: 1rem;
       margin-left: 10px;
     }
+  }
+
+  .v-item-group.v-bottom-nav .v-btn {
+    min-width: 40px;
   }
 }
 .remove-shadow {

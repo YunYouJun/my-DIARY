@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import api from '@/api'
+import api from '@/config/api'
 import { mapMutations, mapState } from 'vuex'
 export default {
   data() {
@@ -113,12 +113,7 @@ export default {
   },
   computed: {
     ...mapState('app', ['drawer']),
-    color() {
-      return this.$store.state.theme.color
-    },
-    textColor() {
-      return this.$store.state.theme.textColor
-    },
+    ...mapState('theme', ['color', 'textColor']),
     gravatar() {
       let avatar = 'https://gravatar.com/avatar/'
       if (this.$store.state.user_config.avatar) {

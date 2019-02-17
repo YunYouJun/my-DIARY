@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 export default {
   props: {
     theme: {
@@ -33,9 +34,9 @@ export default {
   },
   data() {
     return {
-      month: 'September',
-      day: '26',
-      weekday: 'Friday'
+      month: dayjs().format('MMMM'),
+      day: dayjs().format('D'),
+      weekday: dayjs().format('dddd')
     }
   }
 }

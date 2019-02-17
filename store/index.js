@@ -1,7 +1,9 @@
 import app from './modules/app'
+import theme from './modules/theme'
 
 export const modules = {
-  app
+  app,
+  theme
 }
 
 export const state = () => ({
@@ -15,7 +17,8 @@ export const state = () => ({
   },
   theme: JSON.parse(localStorage.getItem('theme')) || {
     color: '',
-    textColor: ''
+    textColor: '',
+    pairColor: ''
   }
 })
 
@@ -27,10 +30,6 @@ export const mutations = {
     localStorage.setItem('token', data.token)
     localStorage.setItem('userid', data.userid)
     localStorage.setItem('user_config', JSON.stringify(data.user_config))
-  },
-  setTheme: (state, theme) => {
-    state.theme = theme
-    localStorage.setItem('theme', JSON.stringify(theme))
   },
   logout: state => {
     state.token = ''

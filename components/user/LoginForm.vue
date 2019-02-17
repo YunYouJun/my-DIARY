@@ -34,7 +34,7 @@
 
 <script>
 import qs from 'qs'
-import ohShenghuo from '@/api/ohShenghuo.json'
+import api from '@/config/api'
 export default {
   data: () => ({
     agreement: 'Would you like to be my friend?',
@@ -42,7 +42,7 @@ export default {
     checkbox: false,
     loading: false,
     loginForm: {
-      csrfmiddlewaretoken: ohShenghuo.csrftoken,
+      csrfmiddlewaretoken: api.ohShenghuo.csrftoken,
       email: process.env.email,
       password: process.env.password
     },
@@ -78,13 +78,13 @@ export default {
               userid: res.data.userid,
               user_config: res.data.user_config
             })
-            this.setTheme(res.data.user_config.role)
+            this.$store.dispatch('theme/setTheme', res.data.user_config.role)
             this.$toast.open({
               color: 'success',
               text: 'Login success'
             })
             this.$router.push({
-              path: '/diary'
+              path: '/app/diary'
             })
           } else {
             this.$toast.open({
@@ -101,24 +101,6 @@ export default {
             text: err
           })
         })
-    },
-    setTheme(role) {
-      let theme = {
-        color: '',
-        textColor: ''
-      }
-      if (role === 'boy') {
-        theme = {
-          color: 'blue accent-2',
-          textColor: 'blue--text text--accent-2'
-        }
-      } else if (role === 'girl') {
-        theme = {
-          color: 'red lighten-2',
-          textColor: 'pink--text text--lighten-2'
-        }
-      }
-      this.$store.commit('setTheme', theme)
     }
   }
 }

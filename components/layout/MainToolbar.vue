@@ -74,8 +74,9 @@ export default {
   },
   computed: {
     extended() {
-      if (this.activeNav) {
+      if (this.activeNav && this.$store.state.token) {
         if (this.activeNav !== 'Calendar') {
+          console.log(this.activeNav)
           return true
         }
       }

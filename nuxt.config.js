@@ -1,6 +1,6 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const pkg = require('./package')
-const api = require('./api')
+const api = require('./config/api')
 // env
 require('dotenv').config()
 

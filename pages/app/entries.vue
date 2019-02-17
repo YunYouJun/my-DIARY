@@ -1,11 +1,21 @@
 <template>
   <div>
-    Entries
+    <no-entries :dialog="dialog" />
   </div>
 </template>
 
 <script>
-export default {}
+import NoEntries from '@/components/nav/entries/NoEntries'
+export default {
+  components: {
+    NoEntries
+  },
+  data() {
+    return {
+      dialog: true
+    }
+  }
+}
 </script>
 
 <style>
