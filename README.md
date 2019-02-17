@@ -19,6 +19,13 @@ Data base on <https://ohshenghuo.com/>
 
 [你的日记 API DOC - Postman](https://documenter.getpostman.com/view/3326320/Rztmr8pE)
 
+## Todo
+
+- 日记
+  - [ ] CRUD
+  - [ ] 日记缓存
+  - [ ] progress bar
+
 ## Build Setup
 
 ``` bash
@@ -35,5 +42,3 @@ $ yarn start
 # generate static project
 $ yarn run generate
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
