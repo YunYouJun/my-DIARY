@@ -26,6 +26,8 @@ Data base on <https://ohshenghuo.com/>
   - [ ] 日记缓存
   - [ ] global progress bar
   - [ ] 日记卡片月份分割
+  - [ ] 翻页懒加载
+  - [ ] 草稿存储
 - [ ] User
   - [ ] Card ripple
 

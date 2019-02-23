@@ -45,7 +45,7 @@
         {{ diary.content }}
       </v-card-text>
       <v-bottom-nav :color="color" :value="true" dark>
-        <v-btn dark @click="toggleEditDialog">
+        <v-btn dark @click="openEditDialog">
           <v-icon>edit</v-icon>
         </v-btn>
         <v-btn dark>
@@ -82,8 +82,10 @@ export default {
       type: Object,
       default: function() {
         return {
+          id: '',
           title: '',
-          content: ''
+          content: '',
+          createddate: ''
         }
       }
     }
@@ -116,7 +118,17 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('diary', ['toggleEditDialog'])
+    ...mapMutations('diary', [
+      'setCurEditDiary',
+      'setOldDiary',
+      'toggleEditDialog'
+    ]),
+    openEditDialog() {
+      // store old diary
+      this.setOldDiary(Object.assign({}, this.diary))
+      this.setCurEditDiary(this.diary)
+      this.toggleEditDialog()
+    }
   }
 }
 </script>
@@ -159,9 +171,6 @@ export default {
   .v-item-group.v-bottom-nav .v-btn {
     min-width: 40px;
   }
-}
-.remove-shadow {
-  box-shadow: none;
 }
 .diary-content {
   white-space: pre-line;
