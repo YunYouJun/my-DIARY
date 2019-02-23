@@ -1,3 +1,4 @@
+import { set } from '@/util/vuex'
 import app from './modules/app'
 import diary from './modules/diary'
 import theme from './modules/theme'
@@ -16,43 +17,39 @@ export const state = () => ({
     email: '',
     name: '',
     role: ''
-  },
-  theme: JSON.parse(localStorage.getItem('theme')) || {
-    color: '',
-    textColor: '',
-    pairColor: ''
   }
 })
 
 export const mutations = {
-  login: (state, data) => {
-    state.token = data.token
-    state.userid = data.userid
-    state.user_config = data.user_config
+  setToken: set('token'),
+  setUserid: set('userid'),
+  setUserConfig: set('user_config')
+}
+
+export const actions = {
+  login: (context, data) => {
+    context.commit('setToken', data.token)
+    context.commit('setUserid', data.userid)
+    context.commit('setUserConfig', data.user_config)
     localStorage.setItem('token', data.token)
     localStorage.setItem('userid', data.userid)
     localStorage.setItem('user_config', JSON.stringify(data.user_config))
   },
-  logout: state => {
-    state.token = ''
-    state.userid = 0
-    state.user_config = {
+  logout: context => {
+    context.dispatch('removeUserinfo')
+    context.dispatch('theme/removeTheme')
+  },
+  removeUserinfo: context => {
+    context.commit('setToken', '')
+    context.commit('setUserid', 0)
+    context.commit('setUserConfig', {
       avatar: '',
       email: '',
       name: '',
       role: ''
-    }
-    state.theme = {
-      color: '',
-      textColor: ''
-    }
+    })
     localStorage.removeItem('token')
     localStorage.removeItem('userid')
     localStorage.removeItem('user_config')
-    localStorage.removeItem('theme')
   }
-}
-
-export const actions = {
-  //
 }

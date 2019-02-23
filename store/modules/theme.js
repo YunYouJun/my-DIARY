@@ -27,6 +27,10 @@ export default {
       }
       context.commit('setColor', myTheme.color)
       context.commit('setTextColor', myTheme.textColor)
+    },
+    removeTheme(context) {
+      context.commit('setColor', '')
+      context.commit('setTextColor', '')
     }
   }
 }

@@ -73,7 +73,7 @@ export default {
         .post('/api/login/', qs.stringify(this.loginForm, { encode: false }))
         .then(res => {
           if (res.data && res.data.token) {
-            this.$store.commit('login', {
+            this.$store.dispatch('login', {
               token: res.data.token,
               userid: res.data.userid,
               user_config: res.data.user_config
