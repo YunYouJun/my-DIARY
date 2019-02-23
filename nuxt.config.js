@@ -48,7 +48,7 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/axios', 
+    '~/plugins/axios',
     '~/plugins/vuetify',
     { src: '~plugins/ga.js', ssr: false }
   ],

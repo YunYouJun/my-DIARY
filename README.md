@@ -24,7 +24,10 @@ Data base on <https://ohshenghuo.com/>
 - 日记
   - [ ] CRUD
   - [ ] 日记缓存
-  - [ ] progress bar
+  - [ ] global progress bar
+  - [ ] 日记卡片月份分割
+- [ ] User
+  - [ ] Card ripple
 
 ## Build Setup
 

@@ -45,9 +45,9 @@
         {{ diary.content }}
       </v-card-text>
       <v-bottom-nav :color="color" :value="true" dark>
-        <!-- <v-btn dark>
-          <v-icon>more_horiz</v-icon>
-        </v-btn> -->
+        <v-btn dark @click="toggleEditDialog">
+          <v-icon>edit</v-icon>
+        </v-btn>
         <v-btn dark>
           <v-icon>location_on</v-icon>
         </v-btn>
@@ -67,6 +67,7 @@
 
 <script>
 import dayjs from 'dayjs'
+import { mapMutations } from 'vuex'
 export default {
   props: {
     color: {
@@ -113,6 +114,9 @@ export default {
     show() {
       this.$emit('update:dialog', this.show)
     }
+  },
+  methods: {
+    ...mapMutations('diary', ['toggleEditDialog'])
   }
 }
 </script>

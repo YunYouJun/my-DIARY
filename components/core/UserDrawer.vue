@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer v-model="inputValue" app>
-    <v-toolbar :color="color" class="pt-5 pb-4" dark>
+    <v-toolbar v-ripple :color="color" class="pt-5 pb-4" dark>
       <v-list>
         <v-list-tile avatar>
           <v-list-tile-avatar>

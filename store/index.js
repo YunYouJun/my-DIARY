@@ -1,8 +1,10 @@
 import app from './modules/app'
+import diary from './modules/diary'
 import theme from './modules/theme'
 
 export const modules = {
   app,
+  diary,
   theme
 }
 

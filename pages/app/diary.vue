@@ -4,30 +4,29 @@
       v-if="diaries.length"
       fluid
       grid-list-md
-      class="diary-container px-2"
+      class="diary-container pa-2"
       fill-height
     >
       <v-layout row wrap align-content-start>
         <v-flex v-for="diary in diaries" :key="diary.id" xs12>
-          <diary-card
-            :color="theme.color"
-            :text-color="theme.textColor"
-            :diary="diary"
-          />
+          <diary-card :diary="diary" />
         </v-flex>
       </v-layout>
     </v-container>
     <no-entries :dialog="dialog" />
+    <edit-diary />
   </div>
 </template>
 
 <script>
 import DiaryCard from '@/components/diary/DiaryCard.vue'
+import EditDiary from '@/components/diary/EditDiary.vue'
 import NoEntries from '@/components/nav/entries/NoEntries.vue'
 import { mapState } from 'vuex'
 export default {
   components: {
     DiaryCard,
+    EditDiary,
     NoEntries
   },
   data() {
