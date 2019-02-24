@@ -94,11 +94,6 @@ export default {
     time() {
       return dayjs(this.diary.createdtime).format('HH:mm')
     }
-  },
-  methods: {
-    replaceBr() {
-      return this.diary.content.replace(/\n/g, '<br />')
-    }
   }
 }
 </script>

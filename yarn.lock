@@ -8359,10 +8359,10 @@ vuetify-loader@^1.2.0:
   dependencies:
     loader-utils "^1.1.0"
 
-vuetify@1.5.0:
-  version "1.5.0"
-  resolved "http://registry.npm.taobao.org/vuetify/download/vuetify-1.5.0.tgz#b7334f525b5dd416b01d5e9ddbadad22beeb9d7f"
-  integrity sha1-tzNPUltd1BawHV6d262tIr7rnX8=
+vuetify@^1.5.2:
+  version "1.5.2"
+  resolved "http://registry.npm.taobao.org/vuetify/download/vuetify-1.5.2.tgz#7563b3ff4b7305f2dff724873f70b024f3672d96"
+  integrity sha1-dWOz/0tzBfLf9ySHP3CwJPNnLZY=
 
 vuex@^3.1.0:
   version "3.1.0"

@@ -35,5 +35,6 @@ export default {
 #app {
   font-family: 'Nunito', 'Kosugi Maru', 'Segoe UI', Tahoma, Geneva, Verdana,
     sans-serif;
+  background: transparent;
 }
 </style>
