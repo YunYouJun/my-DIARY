@@ -21,13 +21,13 @@
         </template>
       </v-layout>
     </v-container>
-    <div class="diary-bg">
-      <img src="/bg/sky.jpg" alt="" class="diary-bg-image">
-    </div>
+    <main-background />
   </div>
 </template>
 
 <script>
+import MainBackground from '@/components/layout/MainBackground.vue'
+
 import DiaryCard from '@/components/diary/DiaryCard.vue'
 import EditDiary from '@/components/diary/EditDiary.vue'
 import NoEntries from '@/components/nav/entries/NoEntries.vue'
@@ -37,7 +37,8 @@ export default {
   components: {
     DiaryCard,
     EditDiary,
-    NoEntries
+    NoEntries,
+    MainBackground
   },
   data() {
     return {
@@ -147,24 +148,8 @@ export default {
 </script>
 
 <style lang="stylus">
-.diary-container {
-  background-attachment: fixed;
-  background-image: url('~assets/img/bg/sky.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 600px;
-}
 .display-month {
   color: white;
   text-shadow: 0px 1px 5px #000000;
-}
-.diary-bg {
-  background-size: cover;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: -1;
-  width: 100%;
-  height: 100% !important;
 }
 </style>
