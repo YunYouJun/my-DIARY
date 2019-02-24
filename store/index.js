@@ -1,4 +1,4 @@
-import { set } from '@/util/vuex'
+import { set } from '@/utils/vuex'
 import app from './modules/app'
 import diary from './modules/diary'
 import theme from './modules/theme'

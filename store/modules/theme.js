@@ -1,4 +1,4 @@
-import { setLocal } from '@/util/vuex'
+import { setLocal } from '@/utils/vuex'
 import theme from '@/config/theme.js'
 
 export default {

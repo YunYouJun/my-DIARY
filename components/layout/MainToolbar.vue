@@ -28,14 +28,14 @@
             <v-btn 
               v-for="navItem in navItems" 
               :key="navItem.title"
-              flat
+              depressed
+              :flat="activeNav !== navItem.title ? true : false"
               small
               :color="color" 
               :value="navItem.title"
-              active-class="nav-btn-active"
-              style="width:90px;"
               nuxt
               :to="navItem.to"
+              style="width:90px;"
             >
               {{ navItem.title }}
             </v-btn>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import UserDrawer from '@/components/core/UserDrawer'
 export default {
   components: {
@@ -73,6 +74,7 @@ export default {
     }
   },
   computed: {
+    ...mapState('theme', ['color', 'textColor']),
     extended() {
       if (this.activeNav && this.$store.state.token) {
         if (this.activeNav !== 'Calendar') {
@@ -81,22 +83,13 @@ export default {
         }
       }
       return false
-    },
-    color() {
-      return this.$store.state.theme.color
-    },
-    textColor() {
-      return this.$store.state.theme.textColor
     }
   }
 }
 </script>
 
 <style lang="stylus">
-$border-radius = 8px;
-// search input
-.v-input__control
-  min-height: 20px !important
+$border-radius = 5px;
 
 // nav
 .v-btn-toggle
@@ -118,10 +111,7 @@ $border-radius = 8px;
     &:not(:last-child)
       border-right: 1px solid currentColor
 
-.nav-btn-active
-  background-color: currentColor
-
-  .v-btn__content
-    color: white
-
+// active color
+.theme--light.v-btn-toggle .v-btn
+  color: white
 </style>

@@ -141,6 +141,10 @@ export default {
 </script>
 
 <style lang="stylus">
+// search input
+.v-input__control
+  min-height: 20px !important
+
 .config-btn
   &.v-btn
     &--icon

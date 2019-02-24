@@ -1,4 +1,4 @@
-import { set, toggle } from '@/util/vuex'
+import { set, toggle } from '@/utils/vuex'
 
 export const setDiaryAttr = property => (store, payload) =>
   (store.curEditDiary[property] = payload)
