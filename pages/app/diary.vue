@@ -1,7 +1,6 @@
 <template>
   <div>
     <no-entries :dialog="dialog" />
-    <edit-diary />
     <v-container
       v-if="!dialog"
       fluid
@@ -27,16 +26,13 @@
 
 <script>
 import MainBackground from '@/components/layout/MainBackground.vue'
-
 import DiaryCard from '@/components/diary/DiaryCard.vue'
-import EditDiary from '@/components/diary/EditDiary.vue'
 import NoEntries from '@/components/nav/entries/NoEntries.vue'
 import { mapState } from 'vuex'
 import dayjs from 'dayjs'
 export default {
   components: {
     DiaryCard,
-    EditDiary,
     NoEntries,
     MainBackground
   },

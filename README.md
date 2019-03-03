@@ -23,7 +23,7 @@ Data base on <https://ohshenghuo.com/>
 
 - 日记
   - [ ] CRUD
-    - [ ] 新建
+    - [x] 新建
     - [ ] 查询
     - [x] 修改
     - [ ] 删除
@@ -31,7 +31,7 @@ Data base on <https://ohshenghuo.com/>
   - [ ] global progress bar
   - [ ] 日记卡片月份分割
   - [ ] 翻页懒加载
-  - [ ] 草稿存储
+  - [x] 草稿存储
 - [ ] User
   - [ ] Config
 

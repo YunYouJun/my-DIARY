@@ -14,5 +14,12 @@ export default {
             .reverse()
         }
       })
+  },
+  getDiaryByDate(date) {
+    return this.$axios.get(`api/diary/?date=${date}`).then(res => {
+      if (res.data) {
+        return res.data.diary
+      }
+    })
   }
 }
