@@ -26,7 +26,7 @@ Data base on <https://ohshenghuo.com/>
     - [x] 新建
     - [ ] 查询
     - [x] 修改
-    - [ ] 删除
+    - [x] 删除
   - [ ] 日记缓存
   - [ ] global progress bar
   - [ ] 日记卡片月份分割

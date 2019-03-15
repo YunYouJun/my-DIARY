@@ -57,7 +57,7 @@
         <v-btn dark>
           <v-icon>music_note</v-icon>
         </v-btn>
-        <v-btn dark>
+        <v-btn dark @click="deleteDiaryById(diary.id)">
           <v-icon>delete</v-icon>
         </v-btn>
       </v-bottom-nav>
@@ -128,6 +128,27 @@ export default {
       this.setOldDiary(Object.assign({}, this.diary))
       this.setCurEditDiary(this.diary)
       this.toggleEditDialog()
+    },
+    deleteDiaryById(id) {
+      this.$axios
+        .get(`/api/diary/delete/${id}/`)
+        .then(res => {
+          console.log(id)
+          console.log(res.data)
+          if (res.data) {
+            this.$toast.open({
+              color: 'success',
+              text: 'Delete success'
+            })
+          }
+        })
+        .catch(err => {
+          this.$toast.open({
+            color: 'error',
+            title: 'Delete fail',
+            text: err
+          })
+        })
     }
   }
 }

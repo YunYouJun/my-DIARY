@@ -23,10 +23,10 @@
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.5",
     "md5": "^2.2.1",
-    "nuxt": "^2.4.3",
+    "nuxt": "^2.4.5",
     "qs": "^6.6.0",
-    "vuetify": "^1.5.2",
-    "vuetify-loader": "^1.2.0"
+    "vuetify": "^1.5.6",
+    "vuetify-loader": "^1.2.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
